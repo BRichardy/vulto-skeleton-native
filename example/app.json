@@ -1,0 +1,9 @@
+{
+  "expo": {
+    "name": "Vulto Skeleton Playground",
+    "slug": "vulto-skeleton-playground",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light"
+  }
+}

@@ -1,0 +1,10 @@
+node_modules/
+.expo/
+dist/
+coverage/
+.env*
+.npmrc
+*.log
+.DS_Store
+Thumbs.db
+/DECISIONS.md

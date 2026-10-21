@@ -1,0 +1,33 @@
+{
+  "name": "vulto-skeleton-native",
+  "version": "0.1.0",
+  "description": "Small, accessible skeleton primitives for React Native and Expo.",
+  "license": "MIT",
+  "author": "RGOR",
+  "type": "module",
+  "main": "./src/index.js",
+  "react-native": "./src/index.js",
+  "types": "./types/index.d.ts",
+  "files": [
+    "src",
+    "types",
+    "example",
+    "README.md",
+    "README.pt-BR.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
+  "keywords": [
+    "react-native",
+    "expo",
+    "skeleton",
+    "placeholder",
+    "loading",
+    "accessibility"
+  ],
+  "peerDependencies": {
+    "react": ">=18 <20",
+    "react-native": ">=0.72 <1"
+  }
+}
