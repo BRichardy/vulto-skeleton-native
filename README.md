@@ -1,16 +1,16 @@
-# Vulto Skeleton
+# Vulto
 
-A small loading placeholder for React Native apps. Blocks and lines hold space on screen while real content is on its way.
+Um bloco visual simples para mostrar enquanto o conteúdo de um app React Native está carregando.
 
-I'm building Vulto as a focused open source package for one visual job. It does not fetch data, decide when a screen is loading, or ask the app to configure a provider.
+O Vulto cuida da forma do placeholder. Seu app continua no controle dos dados, do estado de carregamento e da mensagem que informa à pessoa que o conteúdo está chegando.
 
-## Project status
+## Status
 
-The code is in development and has not been published to npm yet. The API may change before the first stable release.
+O pacote ainda está em desenvolvimento e não foi publicado no npm. A API pode mudar antes da primeira versão estável.
 
-## Try it with Expo
+## Experimente no Expo
 
-The app in [`example/`](./example/README.md) shows the primitive in a profile and content card, with controls to switch between placeholders and content and to enable pulse.
+O app em [`example/`](./example/README.md) mostra a primitive em uma tela de perfil e cartão. Use os controles para alternar entre placeholders e conteúdo real e para ligar a pulsação.
 
 ```sh
 cd example
@@ -18,15 +18,17 @@ npm install
 npm start
 ```
 
-Scan the QR code with Expo Go 58. Keep your phone and computer on the same Wi-Fi network.
+Escaneie o QR code com o Expo Go 58. O computador e o celular precisam estar na mesma rede Wi-Fi.
 
-## Intended use
+## Uso
+
+Quando o pacote estiver publicado, instale com `npm install vulto-skeleton-native`.
 
 ```tsx
 import { View } from 'react-native';
 import { Skeleton } from 'vulto-skeleton-native';
 
-function ProfileLoading() {
+function PerfilCarregando() {
   return (
     <View style={{ flexDirection: 'row', gap: 12, alignItems: 'center' }}>
       <Skeleton width={56} height={56} radius={28} />
@@ -39,19 +41,45 @@ function ProfileLoading() {
 }
 ```
 
-Once the package is published, install it with `npm install vulto-skeleton-native`.
+## Propriedades
 
-## What the first version includes
+| Propriedade | Tipo | Padrão | Para que serve |
+| --- | --- | --- | --- |
+| `width` | `ViewStyle['width']` | `'100%'` | Largura do bloco |
+| `height` | `ViewStyle['height']` | `16` | Altura do bloco |
+| `radius` | `ViewStyle['borderRadius']` | `4` | Arredondamento dos cantos |
+| `color` | `ViewStyle['backgroundColor']` | `'#E5E7EB'` | Cor do bloco |
+| `animation` | `'none' \| 'pulse'` | `'none'` | Aparência parada ou pulsação |
+| `duration` | `number` | `900` | Duração de cada etapa da pulsação, em milissegundos |
+| `style` | `ViewStyle` | — | Estilos adicionais do React Native |
+| `testID` | `string` | — | Identificador para testes no app que usa o pacote |
 
-- One configurable primitive for blocks and lines.
-- Static appearance by default, with optional pulse animation.
-- Respect for the system reduced-motion preference.
-- No runtime dependencies beyond React and React Native peer dependencies.
+## Animação e temas
 
-The app using the library remains responsible for loading state, data, layouts, and accessible status messages. Ready-made avatar, text, and card templates can come later.
+A animação começa desligada. Para ativar a pulsação, use `animation="pulse"`. Ela respeita a preferência do sistema por movimento reduzido.
 
-## License
+Não há provider nem tema global. Passe `color` ou `style` em cada forma, usando as cores que seu app já aplica ao tema atual. O modo `shimmer` não faz parte desta versão.
 
-MIT. See [LICENSE](./LICENSE).
+## Uso em listas
 
-Português: [README.pt-BR.md](./README.pt-BR.md).
+O Vulto não substitui nem configura sua lista. Você pode renderizar a primitive no `renderItem` da lista que o app já usa, como `FlatList` ou `FlashList`:
+
+```tsx
+<FlatList
+  data={[0, 1, 2]}
+  keyExtractor={(item) => String(item)}
+  renderItem={() => <Skeleton height={18} style={{ marginVertical: 8 }} />}
+/>
+```
+
+O pacote não inclui helpers de lista nem componentes prontos de avatar, texto ou cartão.
+
+## Acessibilidade
+
+As formas são decorativas e ficam ocultas para leitores de tela. A tela do app deve comunicar o carregamento com seu próprio texto ou anúncio acessível.
+
+## Licença
+
+MIT. Consulte [LICENSE](./LICENSE).
+
+English: [README.en.md](./README.en.md).

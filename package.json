@@ -11,9 +11,8 @@
   "files": [
     "src",
     "types",
-    "example",
     "README.md",
-    "README.pt-BR.md",
+    "README.en.md",
     "LICENSE",
     "CHANGELOG.md"
   ],
